@@ -21,9 +21,11 @@ const ProblemSection = () => {
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             The Problem
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
+          <h2 className="mb-6 font-serif text-3xl leading-[1.08] text-foreground [text-wrap:balance] md:text-5xl">
             Most Outdoor Service Websites Quietly{" "}
-            <span className="italic text-gradient-gold">Cap What Clients Expect to Pay</span>
+            <span className="box-decoration-clone px-[0.08em] italic text-gradient-gold">
+              Cap What Clients Expect to Pay
+            </span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg mb-14 max-w-2xl mx-auto leading-relaxed">
             If the site feels generic, the brand feels generic. Premium clients decide what they

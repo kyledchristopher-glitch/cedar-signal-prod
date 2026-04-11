@@ -52,13 +52,8 @@ const PortfolioSection = () => {
             Selected Work
           </p>
           <h2 className="font-serif text-3xl text-foreground md:text-5xl">
-            Featured Website Concepts Presented as{" "}
-            <span className="italic text-gradient-gold">Polished Portfolio Work</span>
+            Featured Website Concepts
           </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Real homepage previews from live projects, framed to feel refined, editorial, and
-            presentation-ready.
-          </p>
         </motion.div>
 
         <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-3">

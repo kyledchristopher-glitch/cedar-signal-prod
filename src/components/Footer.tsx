@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="border-t border-border/20 py-12">
+    <footer className="border-t border-bark/20 py-12 bg-bark/10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
         <a href="#" className="font-serif text-lg tracking-wider text-foreground">
           <span className="text-gradient-gold">GOLDEN HOUR</span>{" "}

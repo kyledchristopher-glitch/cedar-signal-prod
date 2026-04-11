@@ -10,8 +10,8 @@ const problems = [
 
 const ProblemSection = () => {
   return (
-    <section className="py-24 md:py-36 relative bg-forest-gradient">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
+    <section className="py-24 md:py-36 relative bg-warmglow-gradient texture-grain">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 text-center relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ const ProblemSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="flex items-start gap-4 p-6 rounded-sm bg-muted/30 border border-border/30"
+              className="flex items-start gap-4 p-6 rounded-sm bg-bark/20 border border-bark/30"
             >
               <XCircle className="text-destructive/70 shrink-0 mt-0.5" size={20} />
               <p className="text-foreground/80 font-sans">{problem}</p>

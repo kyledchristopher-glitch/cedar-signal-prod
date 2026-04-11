@@ -22,7 +22,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/90 backdrop-blur-md border-b border-border/50 py-4"
+          ? "bg-background/92 backdrop-blur-md border-b border-bark/30 py-4"
           : "bg-transparent py-6"
       }`}
     >
@@ -57,7 +57,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-border/30 px-6 py-8 space-y-6 animate-fade-in">
+        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-bark/20 px-6 py-8 space-y-6 animate-fade-in">
           {links.map((l) => (
             <a
               key={l.href}

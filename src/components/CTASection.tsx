@@ -24,15 +24,15 @@ const CTASection = () => {
       <div className="absolute inset-0 z-0" ref={imgRef}>
         <img
           src={ctaBg}
-          alt="Luxury estate at sunset"
+          alt="Luxury woodland estate at sunset"
           className="w-full h-full object-cover"
           loading="lazy"
           width={1920}
           height={1080}
         />
       </div>
-      <div className="absolute inset-0 z-[1] overlay-dark" />
-      <div className="absolute inset-0 z-[1] bg-vignette" />
+      <div className="absolute inset-0 z-[1] overlay-golden" />
+      <div className="absolute inset-0 z-[1] bg-warm-vignette" />
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">

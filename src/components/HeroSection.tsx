@@ -23,16 +23,16 @@ const HeroSection = () => {
       <div className="absolute inset-0 z-0" ref={imgRef}>
         <img
           src={heroBg}
-          alt="Luxury landscape at golden hour"
+          alt="Luxury woodland estate at golden hour"
           className="w-full h-full object-cover animate-slow-drift"
           width={1920}
           height={1080}
         />
       </div>
 
-      {/* Overlays */}
+      {/* Warm overlays */}
       <div className="absolute inset-0 z-[1] overlay-cinematic" />
-      <div className="absolute inset-0 z-[1] bg-vignette" />
+      <div className="absolute inset-0 z-[1] bg-warm-vignette" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pb-24 md:pb-0 pt-32 w-full">

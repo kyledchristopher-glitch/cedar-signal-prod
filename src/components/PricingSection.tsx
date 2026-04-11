@@ -25,8 +25,8 @@ const tiers = [
 
 const PricingSection = () => {
   return (
-    <section id="pricing" className="py-24 md:py-36 relative">
-      <div className="max-w-6xl mx-auto px-6 md:px-12">
+    <section id="pricing" className="py-24 md:py-36 relative texture-grain">
+      <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,8 +53,8 @@ const PricingSection = () => {
               viewport={{ once: true }}
               className={`relative p-8 md:p-10 rounded-sm border transition-colors duration-300 ${
                 tier.featured
-                  ? "border-primary/40 bg-secondary/30"
-                  : "border-border/30 bg-muted/10 hover:border-border/60"
+                  ? "border-amber/40 bg-cedar/20"
+                  : "border-bark/25 bg-bark/10 hover:border-bark/50"
               }`}
             >
               {tier.featured && (
@@ -72,7 +72,7 @@ const PricingSection = () => {
               <ul className="space-y-3 mb-10">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm text-foreground/70">
-                    <span className="text-primary mt-1 text-xs">✦</span>
+                    <span className="text-amber mt-1 text-xs">✦</span>
                     {f}
                   </li>
                 ))}

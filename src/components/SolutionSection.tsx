@@ -11,8 +11,8 @@ const solutions = [
 
 const SolutionSection = () => {
   return (
-    <section className="py-24 md:py-36 relative">
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
+    <section className="py-24 md:py-36 relative texture-grain">
+      <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -41,8 +41,8 @@ const SolutionSection = () => {
             className="space-y-5"
           >
             {solutions.map((s, i) => (
-              <div key={i} className="flex items-start gap-4">
-                <CheckCircle2 className="text-primary shrink-0 mt-0.5" size={20} />
+              <div key={i} className="flex items-start gap-4 p-4 rounded-sm bg-cedar/15 border border-cedar/20">
+                <CheckCircle2 className="text-amber shrink-0 mt-0.5" size={20} />
                 <p className="text-foreground/80 font-sans">{s}</p>
               </div>
             ))}

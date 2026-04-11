@@ -19,51 +19,49 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-end md:items-center overflow-hidden">
-      {/* Background image with parallax */}
       <div className="absolute inset-0 z-0" ref={imgRef}>
         <img
           src={heroBg}
-          alt="Luxury woodland estate at golden hour"
+          alt="Refined outdoor estate grounds at sunset"
           className="w-full h-full object-cover animate-slow-drift"
           width={1920}
           height={1080}
         />
       </div>
 
-      {/* Warm overlays */}
       <div className="absolute inset-0 z-[1] overlay-cinematic" />
       <div className="absolute inset-0 z-[1] bg-warm-vignette" />
 
-      {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pb-24 md:pb-0 pt-32 w-full">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-2xl"
+          className="max-w-3xl"
         >
+          <p className="mb-5 text-[0.72rem] font-semibold uppercase tracking-[0.34em] text-primary/85">
+            Cedar &amp; Signal Design Studio
+          </p>
           <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.1] mb-6 text-foreground">
-            Your Website Should Win You{" "}
-            <span className="text-gradient-gold italic">Better Jobs</span>
+            Premium Websites for{" "}
+            <span className="text-gradient-gold italic">Outdoor Service Brands</span>
           </h1>
 
-          <p className="text-muted-foreground text-base md:text-lg leading-relaxed mb-10 max-w-lg">
-            Most landscaping and tree service companies look cheap online. We build premium websites
-            that help you look like the best option in your market.
+          <p className="mb-10 max-w-2xl text-lg leading-relaxed text-parchment md:text-2xl">
+            Crafted to Help Premium Businesses Win More High-Value Clients
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button variant="hero" size="lg" asChild>
-              <a href="#cta">Get Your Site Live This Week</a>
+              <a href="#cta">Start Your Project</a>
             </Button>
             <Button variant="heroOutline" size="lg" asChild>
-              <a href="#portfolio">See Example Sites</a>
+              <a href="#portfolio">View Studio Work</a>
             </Button>
           </div>
         </motion.div>
       </div>
 
-      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-[2]" />
     </section>
   );

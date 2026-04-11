@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ["'Playfair Display'", "serif"],
-        sans: ["'DM Sans'", "sans-serif"],
+        serif: ["'Cormorant Garamond'", "serif"],
+        sans: ["'Manrope'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -66,6 +66,9 @@ export default {
         cream: "hsl(var(--cream))",
         bronze: "hsl(var(--bronze))",
         warmglow: "hsl(var(--warmglow))",
+        brass: "hsl(var(--brass))",
+        walnut: "hsl(var(--walnut))",
+        parchment: "hsl(var(--parchment))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

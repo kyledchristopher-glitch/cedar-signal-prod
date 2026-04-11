@@ -5,18 +5,18 @@ import portfolioEstate from "@/assets/portfolio-estate.jpg";
 
 const projects = [
   {
-    title: "Luxury Landscaping",
-    subtitle: "Premium presence for a high-end landscape design firm",
+    title: "Private Estate Landscape Studio",
+    subtitle: "Editorial web presence for premium grounds care and garden architecture",
     image: portfolioLandscaping,
   },
   {
-    title: "Tree Service",
-    subtitle: "Credibility and trust for a professional arborist company",
+    title: "Premier Arbor & Tree Care Brand",
+    subtitle: "High-trust presentation for established operators serving discerning properties",
     image: portfolioTree,
   },
   {
-    title: "Outdoor Estate Services",
-    subtitle: "Refined elegance for a full-service estate property team",
+    title: "Outdoor Property Management Firm",
+    subtitle: "Luxury-forward positioning for recurring estate maintenance and outdoor living work",
     image: portfolioEstate,
   },
 ];
@@ -32,12 +32,17 @@ const PortfolioSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-sans font-medium">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             Selected Work
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
-            Sites That Win <span className="italic text-gradient-gold">Better Clients</span>
+            Refined Concepts for Outdoor Brands That Need to{" "}
+            <span className="italic text-gradient-gold">Look Expensive Online</span>
           </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Each direction is shaped to feel rooted, editorial, and quietly authoritative so the
+            brand carries more weight before the first call.
+          </p>
         </motion.div>
 
         <div className="space-y-20 md:space-y-32">
@@ -53,11 +58,11 @@ const PortfolioSection = () => {
               } gap-8 md:gap-16 items-center`}
             >
               <div className="w-full md:w-3/5 group">
-                <div className="relative overflow-hidden rounded-sm">
+                <div className="relative overflow-hidden rounded-[28px] border border-brass/10 bg-bark/10 p-3 shadow-[0_28px_80px_hsl(var(--background)/0.28)]">
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
+                    className="w-full h-auto rounded-[18px] object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                     width={1024}
                     height={1024}
@@ -66,7 +71,7 @@ const PortfolioSection = () => {
                 </div>
               </div>
               <div className="w-full md:w-2/5 space-y-4">
-                <p className="text-primary text-xs tracking-[0.2em] uppercase font-sans font-medium">
+                <p className="text-xs font-medium uppercase tracking-[0.28em] text-primary">
                   {`0${i + 1}`}
                 </p>
                 <h3 className="font-serif text-2xl md:text-3xl text-foreground">{project.title}</h3>

@@ -2,10 +2,10 @@ import { motion } from "framer-motion";
 import { XCircle } from "lucide-react";
 
 const problems = [
-  "Look outdated and unprofessional",
-  "Fail to build trust with premium clients",
-  "Undersell the quality of your work",
-  "Push your best leads toward competitors",
+  "Blend in with lower-end competitors",
+  "Undersell the quality of your craftsmanship",
+  "Lose trust before the first call happens",
+  "Miss out on premium, better-fit clients",
 ];
 
 const ProblemSection = () => {
@@ -18,16 +18,16 @@ const ProblemSection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-sans font-medium">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             The Problem
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground mb-6 leading-tight">
-            Most Local Service Websites Are{" "}
-            <span className="italic text-gradient-gold">Costing You Money</span>
+            Most Outdoor Service Websites Quietly{" "}
+            <span className="italic text-gradient-gold">Cap What Clients Expect to Pay</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg mb-14 max-w-2xl mx-auto leading-relaxed">
-            Your website is your first impression. If it doesn't look premium, you're losing the
-            jobs you actually want.
+            If the site feels generic, the brand feels generic. Premium clients decide what they
+            expect from you long before they ever reach out.
           </p>
         </motion.div>
 
@@ -39,7 +39,7 @@ const ProblemSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="flex items-start gap-4 p-6 rounded-sm bg-bark/20 border border-bark/30"
+              className="flex items-start gap-4 rounded-[24px] border border-walnut/30 bg-walnut/20 p-6"
             >
               <XCircle className="text-destructive/70 shrink-0 mt-0.5" size={20} />
               <p className="text-foreground/80 font-sans">{problem}</p>

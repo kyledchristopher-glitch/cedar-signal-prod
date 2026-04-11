@@ -2,11 +2,11 @@ import { motion } from "framer-motion";
 import { CheckCircle2 } from "lucide-react";
 
 const solutions = [
-  "Premium design that positions you above competitors",
-  "Mobile-first — looks flawless on every device",
-  "Fast loading — no one waits for a slow site",
-  "Built for calls, texts, and real leads",
-  "Tailored for landscaping and outdoor service businesses",
+  "Luxury-forward brand presentation",
+  "Editorial messaging with clear positioning",
+  "Modern, mobile-first performance",
+  "Conversion paths built for qualified inquiries",
+  "Tailored for outdoor service and property brands",
 ];
 
 const SolutionSection = () => {
@@ -20,16 +20,16 @@ const SolutionSection = () => {
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-100px" }}
           >
-            <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-sans font-medium">
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
               The Solution
             </p>
             <h2 className="font-serif text-3xl md:text-4xl text-foreground leading-tight mb-6">
-              We Make You Look Like the{" "}
-              <span className="italic text-gradient-gold">Best Option</span> in Your Area
+              We Shape a Digital Presence That{" "}
+              <span className="italic text-gradient-gold">Feels Worth the Premium</span>
             </h2>
             <p className="text-muted-foreground leading-relaxed">
-              We don't just build websites. We build the perception that you're the premium choice —
-              the company worth paying more for.
+              Cedar &amp; Signal Design Studio builds websites that signal taste, reliability, and
+              care so better-fit clients feel confident choosing you.
             </p>
           </motion.div>
 
@@ -41,8 +41,11 @@ const SolutionSection = () => {
             className="space-y-5"
           >
             {solutions.map((s, i) => (
-              <div key={i} className="flex items-start gap-4 p-4 rounded-sm bg-cedar/15 border border-cedar/20">
-                <CheckCircle2 className="text-amber shrink-0 mt-0.5" size={20} />
+              <div
+                key={i}
+                className="flex items-start gap-4 rounded-[22px] border border-brass/15 bg-cedar/15 p-5"
+              >
+                <CheckCircle2 className="mt-0.5 shrink-0 text-primary" size={20} />
                 <p className="text-foreground/80 font-sans">{s}</p>
               </div>
             ))}

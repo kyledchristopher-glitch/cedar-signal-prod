@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,61 +6,63 @@
 
 @layer base {
   :root {
-    --background: 30 18% 7%;
-    --foreground: 38 25% 88%;
+    --background: 140 24% 8%;
+    --foreground: 38 30% 91%;
 
-    --card: 30 15% 11%;
-    --card-foreground: 38 25% 88%;
+    --card: 142 16% 11%;
+    --card-foreground: 38 30% 91%;
 
-    --popover: 30 15% 11%;
-    --popover-foreground: 38 25% 88%;
+    --popover: 142 16% 11%;
+    --popover-foreground: 38 30% 91%;
 
-    --primary: 35 75% 52%;
-    --primary-foreground: 30 18% 7%;
+    --primary: 39 38% 61%;
+    --primary-foreground: 144 27% 11%;
 
-    --secondary: 35 20% 15%;
-    --secondary-foreground: 38 25% 88%;
+    --secondary: 24 24% 17%;
+    --secondary-foreground: 38 30% 91%;
 
-    --muted: 30 12% 14%;
-    --muted-foreground: 35 12% 50%;
+    --muted: 141 11% 15%;
+    --muted-foreground: 35 21% 71%;
 
-    --accent: 32 22% 18%;
-    --accent-foreground: 38 25% 88%;
+    --accent: 28 21% 16%;
+    --accent-foreground: 38 30% 91%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 30 12% 16%;
-    --input: 30 12% 16%;
-    --ring: 35 75% 52%;
+    --border: 28 18% 23%;
+    --input: 28 18% 23%;
+    --ring: 39 38% 61%;
 
-    --radius: 0.375rem;
+    --radius: 0.875rem;
 
-    /* Nature palette — warmer, woodsier */
-    --forest: 150 35% 10%;
-    --pine: 145 30% 16%;
-    --emerald: 152 40% 25%;
-    --moss: 120 18% 20%;
-    --olive: 75 15% 30%;
-    --sage: 95 10% 45%;
-    --amber: 33 90% 50%;
-    --gold: 38 65% 42%;
-    --bark: 22 35% 16%;
-    --cedar: 18 30% 22%;
-    --timber: 25 25% 28%;
-    --stone: 28 12% 35%;
-    --cream: 36 35% 90%;
-    --bronze: 30 45% 38%;
-    --warmglow: 30 60% 18%;
+    --forest: 143 27% 10%;
+    --pine: 145 24% 17%;
+    --emerald: 145 25% 25%;
+    --moss: 88 13% 31%;
+    --olive: 68 15% 38%;
+    --sage: 94 10% 53%;
+    --amber: 39 40% 55%;
+    --gold: 40 31% 68%;
+    --bark: 24 27% 17%;
+    --cedar: 24 24% 24%;
+    --timber: 27 20% 31%;
+    --stone: 30 14% 44%;
+    --cream: 37 34% 90%;
+    --bronze: 27 35% 42%;
+    --warmglow: 25 35% 14%;
+    --brass: 39 38% 61%;
+    --walnut: 24 28% 23%;
+    --parchment: 37 31% 88%;
 
-    --sidebar-background: 30 18% 7%;
-    --sidebar-foreground: 38 25% 88%;
-    --sidebar-primary: 35 75% 52%;
-    --sidebar-primary-foreground: 30 18% 7%;
-    --sidebar-accent: 32 22% 18%;
-    --sidebar-accent-foreground: 38 25% 88%;
-    --sidebar-border: 30 12% 16%;
-    --sidebar-ring: 35 75% 52%;
+    --sidebar-background: 140 24% 8%;
+    --sidebar-foreground: 38 30% 91%;
+    --sidebar-primary: 39 38% 61%;
+    --sidebar-primary-foreground: 144 27% 11%;
+    --sidebar-accent: 28 21% 16%;
+    --sidebar-accent-foreground: 38 30% 91%;
+    --sidebar-border: 28 18% 23%;
+    --sidebar-ring: 39 38% 61%;
   }
 }
 
@@ -71,18 +73,46 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Manrope', sans-serif;
+    background:
+      radial-gradient(circle at top left, hsl(var(--brass) / 0.14), transparent 0 24%),
+      radial-gradient(circle at top right, hsl(var(--walnut) / 0.18), transparent 0 22%),
+      linear-gradient(180deg, hsl(var(--forest)) 0%, hsl(var(--background)) 42%, hsl(var(--forest) / 0.96) 100%);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: -0.03em;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(135deg, hsl(var(--parchment) / 0.035), transparent 24%),
+      repeating-linear-gradient(
+        115deg,
+        hsl(var(--parchment) / 0.018) 0,
+        hsl(var(--parchment) / 0.018) 1px,
+        transparent 1px,
+        transparent 42px
+      );
+    opacity: 0.75;
+    mix-blend-mode: screen;
+  }
+
+  #root {
+    position: relative;
+    z-index: 0;
   }
 }
 
 @layer utilities {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--amber)), hsl(var(--gold)), hsl(var(--bronze)));
+    background-image: linear-gradient(135deg, hsl(var(--parchment)), hsl(var(--gold)), hsl(var(--bronze)));
   }
 
   .bg-forest-gradient {
@@ -94,7 +124,7 @@
   }
 
   .bg-cabin-gradient {
-    background: linear-gradient(180deg, hsl(var(--bark)) 0%, hsl(var(--background)) 60%, hsl(var(--forest) / 0.5) 100%);
+    background: linear-gradient(180deg, hsl(var(--walnut)) 0%, hsl(var(--background)) 55%, hsl(var(--forest) / 0.55) 100%);
   }
 
   .bg-vignette {
@@ -102,7 +132,7 @@
   }
 
   .bg-warm-vignette {
-    background: radial-gradient(ellipse at center, hsl(var(--amber) / 0.06) 0%, transparent 40%, hsl(var(--background) / 0.9) 100%);
+    background: radial-gradient(ellipse at center, hsl(var(--parchment) / 0.08) 0%, transparent 42%, hsl(var(--background) / 0.9) 100%);
   }
 
   .overlay-dark {
@@ -110,11 +140,11 @@
   }
 
   .overlay-cinematic {
-    background: linear-gradient(180deg, hsl(var(--background) / 0.15) 0%, hsl(var(--bark) / 0.3) 30%, hsl(var(--background) / 0.9) 100%);
+    background: linear-gradient(180deg, hsl(var(--background) / 0.12) 0%, hsl(var(--walnut) / 0.28) 30%, hsl(var(--background) / 0.92) 100%);
   }
 
   .overlay-golden {
-    background: linear-gradient(180deg, hsl(var(--amber) / 0.08) 0%, hsl(var(--background) / 0.5) 40%, hsl(var(--background) / 0.92) 100%);
+    background: linear-gradient(180deg, hsl(var(--brass) / 0.12) 0%, hsl(var(--background) / 0.54) 42%, hsl(var(--background) / 0.94) 100%);
   }
 
   .texture-grain {

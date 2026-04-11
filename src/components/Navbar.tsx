@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import logoLight from "@/assets/cedar-signal-logo-light-tight.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,14 +23,23 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-background/92 backdrop-blur-md border-b border-bark/30 py-4"
+          ? "border-b border-brass/15 bg-background/90 py-4 backdrop-blur-xl shadow-[0_12px_40px_hsl(var(--forest)/0.28)]"
           : "bg-transparent py-6"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="font-serif text-lg md:text-xl tracking-wider text-foreground">
-          <span className="text-gradient-gold">GOLDEN HOUR</span>{" "}
-          <span className="font-light">SITES</span>
+        <a href="#" className="flex flex-col items-start gap-3 pr-8">
+          <img
+            src={logoLight}
+            alt="Cedar & Signal"
+            className="h-12 w-auto rounded-[18px] border border-brass/20 bg-parchment/95 p-2 shadow-[0_18px_40px_hsl(var(--background)/0.18)] md:h-14"
+            width={1116}
+            height={320}
+            loading="eager"
+          />
+          <span className="pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-primary/85">
+            Design Studio
+          </span>
         </a>
 
         <div className="hidden md:flex items-center gap-10">
@@ -37,7 +47,7 @@ const Navbar = () => {
             <a
               key={l.href}
               href={l.href}
-              className="text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase transition-colors duration-300"
+              className="text-sm uppercase tracking-[0.28em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
             >
               {l.label}
             </a>
@@ -57,13 +67,13 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-background/95 backdrop-blur-lg border-t border-bark/20 px-6 py-8 space-y-6 animate-fade-in">
+        <div className="space-y-6 border-t border-brass/15 bg-background/95 px-6 py-8 backdrop-blur-xl animate-fade-in md:hidden">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
               onClick={() => setMobileOpen(false)}
-              className="block text-muted-foreground hover:text-foreground text-sm tracking-widest uppercase"
+              className="block text-sm uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground"
             >
               {l.label}
             </a>

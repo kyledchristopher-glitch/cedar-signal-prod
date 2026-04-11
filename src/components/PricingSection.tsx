@@ -5,21 +5,31 @@ const tiers = [
   {
     label: "Starter",
     price: "$500 – $1,000",
-    description: "Template-based setup tailored to your brand. Fast, clean, professional.",
-    features: ["Premium template customization", "Mobile-optimized", "Contact form + click-to-call", "Live in 3–5 days"],
+    description: "A polished launch-ready presence tailored to your brand and service area.",
+    features: [
+      "Refined template customization",
+      "Mobile-optimized",
+      "Contact form + click-to-call",
+      "Live in 3–5 days",
+    ],
   },
   {
     label: "Premium",
     price: "$1,500 – $2,500",
-    description: "Custom visuals, messaging, and positioning. Built to dominate your market.",
-    features: ["Custom design & photography direction", "Conversion-focused copy", "SEO foundations", "Live in 5–10 days"],
+    description: "Custom visuals, messaging, and positioning for brands that need a stronger market presence.",
+    features: [
+      "Custom design direction",
+      "Conversion-focused copy",
+      "SEO foundations",
+      "Live in 5–10 days",
+    ],
     featured: true,
   },
   {
     label: "Ongoing",
     price: "$50 – $150/mo",
-    description: "Hosting, updates, and peace of mind. Your site stays fast and current.",
-    features: ["Managed hosting", "Monthly content updates", "Performance monitoring", "Priority support"],
+    description: "Hosting, refinements, and peace of mind so your site stays sharp and current.",
+    features: ["Managed hosting", "Content refinements", "Performance monitoring", "Priority support"],
   },
 ];
 
@@ -34,13 +44,17 @@ const PricingSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-sans font-medium">
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             Investment
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
-            Straightforward{" "}
-            <span className="italic text-gradient-gold">Pricing</span>
+            Premium Presentation with a{" "}
+            <span className="italic text-gradient-gold">Clear, Straightforward Investment</span>
           </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Choose the level of support that fits where your brand is right now. Every option is
+            designed to elevate how your business is perceived online.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
@@ -51,18 +65,18 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative p-8 md:p-10 rounded-sm border transition-colors duration-300 ${
+              className={`relative rounded-[28px] border p-8 transition-colors duration-300 md:p-10 ${
                 tier.featured
-                  ? "border-amber/40 bg-cedar/20"
+                  ? "border-brass/40 bg-cedar/20 shadow-[0_28px_80px_hsl(var(--background)/0.22)]"
                   : "border-bark/25 bg-bark/10 hover:border-bark/50"
               }`}
             >
               {tier.featured && (
-                <span className="absolute -top-3 left-8 bg-primary text-primary-foreground text-[10px] tracking-[0.2em] uppercase px-3 py-1 rounded-sm font-sans font-semibold">
-                  Most Popular
+                <span className="absolute -top-3 left-8 rounded-full bg-primary px-4 py-1 text-[10px] font-semibold uppercase tracking-[0.24em] text-primary-foreground">
+                  Studio Favorite
                 </span>
               )}
-              <p className="text-xs tracking-[0.2em] uppercase text-muted-foreground font-sans mb-2">
+              <p className="mb-2 text-xs font-sans uppercase tracking-[0.24em] text-muted-foreground">
                 {tier.label}
               </p>
               <p className="font-serif text-2xl md:text-3xl text-foreground mb-3">{tier.price}</p>
@@ -72,7 +86,7 @@ const PricingSection = () => {
               <ul className="space-y-3 mb-10">
                 {tier.features.map((f) => (
                   <li key={f} className="flex items-start gap-3 text-sm text-foreground/70">
-                    <span className="text-amber mt-1 text-xs">✦</span>
+                    <span className="mt-1 text-xs text-primary">✦</span>
                     {f}
                   </li>
                 ))}

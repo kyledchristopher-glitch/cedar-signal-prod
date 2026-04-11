@@ -3,18 +3,18 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Send Your Details",
-    description: "Share your logo, phone number, and a few photos. That's it.",
+    title: "Share the Essentials",
+    description: "Send your logo, service area, and any existing photos or references.",
   },
   {
     number: "02",
-    title: "We Build Your Site",
-    description: "We design and customize a premium site around your brand and market.",
+    title: "We Refine the Direction",
+    description: "We shape the layout, copy, and visual tone into a more premium online presence.",
   },
   {
     number: "03",
-    title: "Go Live in Days",
-    description: "Your new website is live and ready to start winning you better jobs.",
+    title: "Launch with Confidence",
+    description: "Your site goes live looking sharper, more credible, and ready for higher-value inquiries.",
   },
 ];
 
@@ -29,13 +29,17 @@ const ProcessSection = () => {
           viewport={{ once: true, margin: "-100px" }}
           className="text-center mb-20"
         >
-          <p className="text-primary text-xs tracking-[0.3em] uppercase mb-4 font-sans font-medium">
-            How It Works
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
+            Studio Process
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
-            Simple Setup.{" "}
-            <span className="italic text-gradient-gold">Fast Launch.</span>
+            A Clear Studio Process,{" "}
+            <span className="italic text-gradient-gold">Without Agency Bloat.</span>
           </h2>
+          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            The process stays concise and collaborative so your brand gets a more elevated online
+            presence without unnecessary drag.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
@@ -46,7 +50,7 @@ const ProcessSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="text-center md:text-left p-6 rounded-sm bg-bark/15 border border-bark/20"
+              className="rounded-[26px] border border-bark/20 bg-bark/15 p-6 text-center md:text-left"
             >
               <span className="text-gradient-gold font-serif text-5xl md:text-6xl font-light">
                 {step.number}

@@ -20,11 +20,10 @@ const CTASection = () => {
 
   return (
     <section id="cta" className="relative py-32 md:py-44 overflow-hidden">
-      {/* Background */}
       <div className="absolute inset-0 z-0" ref={imgRef}>
         <img
           src={ctaBg}
-          alt="Luxury woodland estate at sunset"
+          alt="Warm forest landscape at sunset"
           className="w-full h-full object-cover"
           loading="lazy"
           width={1920}
@@ -34,7 +33,6 @@ const CTASection = () => {
       <div className="absolute inset-0 z-[1] overlay-golden" />
       <div className="absolute inset-0 z-[1] bg-warm-vignette" />
 
-      {/* Content */}
       <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -42,20 +40,23 @@ const CTASection = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true, margin: "-100px" }}
         >
+          <p className="mb-4 text-xs font-medium uppercase tracking-[0.32em] text-primary/85">
+            Cedar &amp; Signal Design Studio
+          </p>
           <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6">
-            Get a Website That Actually Brings You{" "}
-            <span className="italic text-gradient-gold">Better Jobs</span>
+            Build a Website That Helps Premium Clients{" "}
+            <span className="italic text-gradient-gold">Choose You Faster</span>
           </h2>
           <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Stop losing premium clients to competitors with better websites. Let's fix that this
-            week.
+            Refined web design for outdoor service brands that need to look established, expensive,
+            and easy to trust.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg">
-              Get Started
+            <Button variant="hero" size="lg" asChild>
+              <a href="#pricing">Review the Investment</a>
             </Button>
-            <Button variant="heroOutline" size="lg">
-              Book a Call
+            <Button variant="heroOutline" size="lg" asChild>
+              <a href="#process">See the Process</a>
             </Button>
           </div>
         </motion.div>

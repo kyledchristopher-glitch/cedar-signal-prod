@@ -1,7 +1,16 @@
-import { useEffect, useRef } from "react";
+import { type FormEvent, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
+
+const consultationEmail = "hello@cedarandsignal.com";
+
+const fieldClassName =
+  "h-12 rounded-[16px] border-brass/20 bg-background/70 px-4 text-sm text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0";
+
+const labelClassName = "mb-3 block text-[0.64rem] font-semibold uppercase tracking-[0.26em] text-primary/85";
 
 const CTASection = () => {
   const imgRef = useRef<HTMLDivElement>(null);
@@ -18,13 +27,44 @@ const CTASection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const formData = new FormData(event.currentTarget);
+    const name = formData.get("name")?.toString().trim() ?? "";
+    const email = formData.get("email")?.toString().trim() ?? "";
+    const company = formData.get("company")?.toString().trim() ?? "";
+    const website = formData.get("website")?.toString().trim() ?? "";
+    const projectType = formData.get("projectType")?.toString().trim() ?? "";
+    const details = formData.get("details")?.toString().trim() ?? "";
+
+    const subject = encodeURIComponent(
+      `Consultation Request${company ? ` - ${company}` : name ? ` - ${name}` : ""}`,
+    );
+
+    const body = encodeURIComponent(
+      [
+        `Name: ${name || "-"}`,
+        `Email: ${email || "-"}`,
+        `Company Name: ${company || "-"}`,
+        `Website URL: ${website || "-"}`,
+        `Project Type: ${projectType || "-"}`,
+        "",
+        "Brief Project Details:",
+        details || "-",
+      ].join("\n"),
+    );
+
+    window.location.href = `mailto:${consultationEmail}?subject=${subject}&body=${body}`;
+  };
+
   return (
-    <section id="cta" className="relative py-32 md:py-44 overflow-hidden">
+    <section id="cta" className="relative overflow-hidden py-32 md:py-44">
       <div className="absolute inset-0 z-0" ref={imgRef}>
         <img
           src={ctaBg}
           alt="Warm forest landscape at sunset"
-          className="w-full h-full object-cover"
+          className="h-full w-full object-cover"
           loading="lazy"
           width={1920}
           height={1080}
@@ -33,33 +73,155 @@ const CTASection = () => {
       <div className="absolute inset-0 z-[1] overlay-golden" />
       <div className="absolute inset-0 z-[1] bg-warm-vignette" />
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 md:px-12 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <p className="mb-4 text-xs font-medium uppercase tracking-[0.32em] text-primary/85">
-            Cedar &amp; Signal Design Studio
-          </p>
-          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-6">
-            Build a Website That Helps Premium Clients{" "}
-            <span className="italic text-gradient-gold">Choose You Faster</span>
-          </h2>
-          <p className="text-muted-foreground text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-            Refined web design for outdoor service brands that need to look established, expensive,
-            and easy to trust.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" size="lg" asChild>
-              <a href="#pricing">Review the Investment</a>
-            </Button>
-            <Button variant="heroOutline" size="lg" asChild>
-              <a href="#process">See the Process</a>
-            </Button>
-          </div>
-        </motion.div>
+      <div className="relative z-10 mx-auto max-w-7xl px-6 md:px-12">
+        <div className="grid items-start gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="max-w-2xl pt-2"
+          >
+            <p className="mb-4 text-xs font-medium uppercase tracking-[0.32em] text-primary/85">
+              Consultation
+            </p>
+            <h2 className="mb-6 font-serif text-3xl leading-tight text-foreground md:text-5xl lg:text-6xl">
+              Let&apos;s Build a Website That Matches the{" "}
+              <span className="italic text-gradient-gold">Quality of Your Work</span>
+            </h2>
+            <p className="max-w-xl text-base leading-relaxed text-parchment md:text-lg">
+              Cedar &amp; Signal creates refined websites for premium home service, outdoor living,
+              and craftsmanship-driven local businesses that need stronger credibility, deeper
+              trust, and better lead conversion.
+            </p>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-muted-foreground md:text-base">
+              If your business delivers high-quality work, your website should look equally
+              considered. Share a few details and we&apos;ll review the opportunity with you.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 36 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.85, delay: 0.1 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="rounded-[30px] border border-brass/16 bg-background/68 p-6 shadow-[0_28px_80px_hsl(var(--background)/0.28)] backdrop-blur-xl md:p-8 lg:p-10"
+          >
+            <form className="space-y-6" onSubmit={handleSubmit}>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label className={labelClassName} htmlFor="consultation-name">
+                    Name
+                  </label>
+                  <Input
+                    id="consultation-name"
+                    name="name"
+                    autoComplete="name"
+                    placeholder="Your name"
+                    className={fieldClassName}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClassName} htmlFor="consultation-email">
+                    Email
+                  </label>
+                  <Input
+                    id="consultation-email"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@company.com"
+                    className={fieldClassName}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <label className={labelClassName} htmlFor="consultation-company">
+                    Company Name
+                  </label>
+                  <Input
+                    id="consultation-company"
+                    name="company"
+                    autoComplete="organization"
+                    placeholder="Your company"
+                    className={fieldClassName}
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className={labelClassName} htmlFor="consultation-website">
+                    Website URL
+                  </label>
+                  <Input
+                    id="consultation-website"
+                    name="website"
+                    type="url"
+                    autoComplete="url"
+                    placeholder="https://"
+                    className={fieldClassName}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className={labelClassName} htmlFor="consultation-project-type">
+                  Project Type
+                </label>
+                <select
+                  id="consultation-project-type"
+                  name="projectType"
+                  defaultValue=""
+                  className={`${fieldClassName} w-full appearance-none pr-10`}
+                  required
+                >
+                  <option value="" disabled>
+                    Select a project type
+                  </option>
+                  <option value="Signature Website">Signature Website</option>
+                  <option value="Authority Website">Authority Website</option>
+                  <option value="Ongoing Care Plan">Ongoing Care Plan</option>
+                  <option value="Not Sure Yet">Not Sure Yet</option>
+                </select>
+              </div>
+
+              <div>
+                <label className={labelClassName} htmlFor="consultation-details">
+                  Brief Project Details
+                </label>
+                <Textarea
+                  id="consultation-details"
+                  name="details"
+                  placeholder="Tell us about your business, what you do, and what you want your new website to accomplish."
+                  className="min-h-[150px] rounded-[18px] border-brass/20 bg-background/70 px-4 py-4 text-sm leading-relaxed text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0"
+                  required
+                />
+              </div>
+
+              <div className="pt-2">
+                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
+                  Request a Consultation
+                </Button>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Tell us a bit about your business and project. We&apos;ll review it and reach
+                  out with next steps. If your device does not open an email client, contact us at{" "}
+                  <a
+                    href={`mailto:${consultationEmail}`}
+                    className="text-primary transition-colors duration-300 hover:text-foreground"
+                  >
+                    {consultationEmail}
+                  </a>
+                  .
+                </p>
+              </div>
+            </form>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

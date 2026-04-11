@@ -53,7 +53,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button variant="hero" size="sm" asChild>
-            <a href="#cta">Get Started</a>
+            <a href="#cta">Request a Consultation</a>
           </Button>
         </div>
 
@@ -79,7 +79,7 @@ const Navbar = () => {
             </a>
           ))}
           <Button variant="hero" size="sm" className="w-full" asChild>
-            <a href="#cta">Get Started</a>
+            <a href="#cta">Request a Consultation</a>
           </Button>
         </div>
       )}

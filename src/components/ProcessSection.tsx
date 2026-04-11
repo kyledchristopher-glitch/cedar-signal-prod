@@ -3,18 +3,21 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Share the Essentials",
-    description: "Send your logo, service area, and any existing photos or references.",
+    title: "Discovery",
+    description:
+      "We learn about your business, your market, and what your website needs to accomplish.",
   },
   {
     number: "02",
-    title: "We Refine the Direction",
-    description: "We shape the layout, copy, and visual tone into a more premium online presence.",
+    title: "Design & Build",
+    description:
+      "We create a custom website that reflects the quality of your work and makes your business look established, credible, and premium.",
   },
   {
     number: "03",
-    title: "Launch with Confidence",
-    description: "Your site goes live looking sharper, more credible, and ready for higher-value inquiries.",
+    title: "Launch & Support",
+    description:
+      "We refine, launch, and make sure everything is ready for a smooth handoff, with ongoing support available if needed.",
   },
 ];
 
@@ -30,15 +33,14 @@ const ProcessSection = () => {
           className="text-center mb-20"
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
-            Studio Process
+            Process
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
-            A Clear Studio Process,{" "}
-            <span className="italic text-gradient-gold">Without Agency Bloat.</span>
+            A Clear, Thoughtful Process
           </h2>
           <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            The process stays concise and collaborative so your brand gets a more elevated online
-            presence without unnecessary drag.
+            We keep every project focused, organized, and tailored to the businesses we serve, so
+            your new website feels polished, strategic, and ready to perform.
           </p>
         </motion.div>
 

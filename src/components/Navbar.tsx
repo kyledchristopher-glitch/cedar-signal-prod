@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import logoLight from "@/assets/cedar-signal-logo-light-tight.png";
 
 const Navbar = () => {
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
@@ -13,10 +16,15 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
   const links = [
-    { label: "Work", href: "#portfolio" },
-    { label: "Process", href: "#process" },
-    { label: "Pricing", href: "#pricing" },
+    { label: "Our Philosophy", href: "/our-philosophy", isRoute: true },
+    { label: "Work", href: isHomePage ? "#portfolio" : "/#portfolio" },
+    { label: "Process", href: isHomePage ? "#process" : "/#process" },
+    { label: "Pricing", href: isHomePage ? "#pricing" : "/#pricing" },
   ];
 
   return (
@@ -28,7 +36,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <a href="#" className="flex flex-col items-start gap-3 pr-8">
+        <Link to="/" className="flex flex-col items-start gap-3 pr-8">
           <img
             src={logoLight}
             alt="Cedar & Signal"
@@ -40,17 +48,29 @@ const Navbar = () => {
           <span className="pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-primary/85">
             Design Studio
           </span>
-        </a>
+        </Link>
 
         <div className="hidden md:flex items-center gap-10">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm uppercase tracking-[0.28em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
-            >
-              {l.label}
-            </a>
+            l.isRoute ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                className={`text-sm uppercase tracking-[0.28em] transition-colors duration-300 hover:text-foreground ${
+                  location.pathname === l.href ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                className="text-sm uppercase tracking-[0.28em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            )
           ))}
           <Button variant="hero" size="sm" asChild>
             <a href="#cta">Request a Consultation</a>
@@ -69,14 +89,27 @@ const Navbar = () => {
       {mobileOpen && (
         <div className="space-y-6 border-t border-brass/15 bg-background/95 px-6 py-8 backdrop-blur-xl animate-fade-in md:hidden">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setMobileOpen(false)}
-              className="block text-sm uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground"
-            >
-              {l.label}
-            </a>
+            l.isRoute ? (
+              <Link
+                key={l.href}
+                to={l.href}
+                onClick={() => setMobileOpen(false)}
+                className={`block text-sm uppercase tracking-[0.28em] hover:text-foreground ${
+                  location.pathname === l.href ? "text-foreground" : "text-muted-foreground"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ) : (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setMobileOpen(false)}
+                className="block text-sm uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground"
+              >
+                {l.label}
+              </a>
+            )
           ))}
           <Button variant="hero" size="sm" className="w-full" asChild>
             <a href="#cta">Request a Consultation</a>

@@ -60,8 +60,12 @@ export default {
         amber: "hsl(var(--amber))",
         gold: "hsl(var(--gold))",
         bark: "hsl(var(--bark))",
+        cedar: "hsl(var(--cedar))",
+        timber: "hsl(var(--timber))",
         stone: "hsl(var(--stone))",
         cream: "hsl(var(--cream))",
+        bronze: "hsl(var(--bronze))",
+        warmglow: "hsl(var(--warmglow))",
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",

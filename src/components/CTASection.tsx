@@ -1,4 +1,4 @@
-import { type FormEvent, useEffect, useRef } from "react";
+import { type FormEvent, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,14 +6,18 @@ import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
 
 const consultationEmail = "kyle@cedarandsignal.com";
+const consultationSubmitEndpoint = `https://formsubmit.co/ajax/${consultationEmail}`;
 
 const fieldClassName =
   "h-12 rounded-[16px] border-brass/20 bg-background/70 px-4 text-sm text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0";
 
 const labelClassName = "mb-3 block text-[0.64rem] font-semibold uppercase tracking-[0.26em] text-primary/85";
+type SubmissionState = "idle" | "submitting" | "success" | "error";
 
 const CTASection = () => {
   const imgRef = useRef<HTMLDivElement>(null);
+  const [submissionState, setSubmissionState] = useState<SubmissionState>("idle");
+  const [submissionMessage, setSubmissionMessage] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -27,35 +31,52 @@ const CTASection = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const formData = new FormData(event.currentTarget);
+    const form = event.currentTarget;
+    const formData = new FormData(form);
     const name = formData.get("name")?.toString().trim() ?? "";
     const email = formData.get("email")?.toString().trim() ?? "";
     const company = formData.get("company")?.toString().trim() ?? "";
-    const website = formData.get("website")?.toString().trim() ?? "";
     const projectType = formData.get("projectType")?.toString().trim() ?? "";
-    const details = formData.get("details")?.toString().trim() ?? "";
+    setSubmissionState("submitting");
+    setSubmissionMessage("");
 
-    const subject = encodeURIComponent(
-      `Consultation Request${company ? ` - ${company}` : name ? ` - ${name}` : ""}`,
+    formData.set(
+      "_subject",
+      `Cedar & Signal Consultation Request${company ? ` - ${company}` : name ? ` - ${name}` : ""}`,
     );
+    formData.set("_template", "table");
+    formData.set("_replyto", email);
 
-    const body = encodeURIComponent(
-      [
-        `Name: ${name || "-"}`,
-        `Email: ${email || "-"}`,
-        `Company Name: ${company || "-"}`,
-        `Website URL: ${website || "-"}`,
-        `Project Type: ${projectType || "-"}`,
-        "",
-        "Brief Project Details:",
-        details || "-",
-      ].join("\n"),
-    );
+    try {
+      const response = await fetch(consultationSubmitEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
 
-    window.location.href = `mailto:${consultationEmail}?subject=${subject}&body=${body}`;
+      const responseBody = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(responseBody?.message || "Unable to submit form.");
+      }
+
+      form.reset();
+      setSubmissionState("success");
+      setSubmissionMessage(
+        "Consultation request received. We’ll review it and reach out with next steps.",
+      );
+    } catch (error) {
+      console.error("Consultation form submission failed", error);
+      setSubmissionState("error");
+      setSubmissionMessage(
+        `We couldn’t send your request just now. Please try again or email ${consultationEmail}.`,
+      );
+    }
   };
 
   return (
@@ -108,6 +129,10 @@ const CTASection = () => {
             className="rounded-[30px] border border-brass/16 bg-background/68 p-6 shadow-[0_28px_80px_hsl(var(--background)/0.28)] backdrop-blur-xl md:p-8 lg:p-10"
           >
             <form className="space-y-6" onSubmit={handleSubmit}>
+              <input type="hidden" name="_subject" value="Cedar & Signal Consultation Request" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="text" name="_honey" className="hidden" tabIndex={-1} autoComplete="off" />
+
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label className={labelClassName} htmlFor="consultation-name">
@@ -141,6 +166,21 @@ const CTASection = () => {
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div>
+                  <label className={labelClassName} htmlFor="consultation-phone">
+                    Phone Number
+                  </label>
+                  <Input
+                    id="consultation-phone"
+                    name="phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="(555) 555-5555"
+                    className={fieldClassName}
+                    required
+                  />
+                </div>
+
+                <div>
                   <label className={labelClassName} htmlFor="consultation-company">
                     Company Name
                   </label>
@@ -153,7 +193,9 @@ const CTASection = () => {
                     required
                   />
                 </div>
+              </div>
 
+              <div className="grid gap-6 md:grid-cols-2">
                 <div>
                   <label className={labelClassName} htmlFor="consultation-website">
                     Website URL
@@ -161,33 +203,34 @@ const CTASection = () => {
                   <Input
                     id="consultation-website"
                     name="website"
-                    type="url"
+                    type="text"
                     autoComplete="url"
-                    placeholder="https://"
+                    placeholder="cedarandsignal.com"
                     className={fieldClassName}
+                    required
                   />
                 </div>
-              </div>
 
-              <div>
-                <label className={labelClassName} htmlFor="consultation-project-type">
-                  Project Type
-                </label>
-                <select
-                  id="consultation-project-type"
-                  name="projectType"
-                  defaultValue=""
-                  className={`${fieldClassName} w-full appearance-none pr-10`}
-                  required
-                >
-                  <option value="" disabled>
-                    Select a project type
-                  </option>
-                  <option value="Signature Website">Signature Website</option>
-                  <option value="Authority Website">Authority Website</option>
-                  <option value="Ongoing Care Plan">Ongoing Care Plan</option>
-                  <option value="Not Sure Yet">Not Sure Yet</option>
-                </select>
+                <div>
+                  <label className={labelClassName} htmlFor="consultation-project-type">
+                    Project Type
+                  </label>
+                  <select
+                    id="consultation-project-type"
+                    name="projectType"
+                    defaultValue=""
+                    className={`${fieldClassName} w-full appearance-none pr-10`}
+                    required
+                  >
+                    <option value="" disabled>
+                      Select a project type
+                    </option>
+                    <option value="Signature Website">Signature Website</option>
+                    <option value="Authority Website">Authority Website</option>
+                    <option value="Ongoing Care Plan">Ongoing Care Plan</option>
+                    <option value="Not Sure Yet">Not Sure Yet</option>
+                  </select>
+                </div>
               </div>
 
               <div>
@@ -204,12 +247,18 @@ const CTASection = () => {
               </div>
 
               <div className="pt-2">
-                <Button type="submit" variant="hero" size="lg" className="w-full sm:w-auto">
-                  Request a Consultation
+                <Button
+                  type="submit"
+                  variant="hero"
+                  size="lg"
+                  className="w-full sm:w-auto"
+                  disabled={submissionState === "submitting"}
+                >
+                  {submissionState === "submitting" ? "Sending..." : "Request a Consultation"}
                 </Button>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                   Tell us a bit about your business and project. We&apos;ll review it and reach
-                  out with next steps. If your device does not open an email client, contact us at{" "}
+                  out with next steps. You can also contact us at{" "}
                   <a
                     href={`mailto:${consultationEmail}`}
                     className="text-primary transition-colors duration-300 hover:text-foreground"
@@ -218,6 +267,17 @@ const CTASection = () => {
                   </a>
                   .
                 </p>
+                {submissionState !== "idle" ? (
+                  <p
+                    className={`mt-3 text-sm leading-relaxed ${
+                      submissionState === "error" ? "text-destructive" : "text-primary"
+                    }`}
+                    role="status"
+                    aria-live="polite"
+                  >
+                    {submissionMessage}
+                  </p>
+                ) : null}
               </div>
             </form>
           </motion.div>

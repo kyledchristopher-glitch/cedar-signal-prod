@@ -3,21 +3,21 @@ import { motion } from "framer-motion";
 const steps = [
   {
     number: "01",
-    title: "Discovery",
+    title: "Discovery & Strategy",
     description:
-      "We learn about your business, your market, and what your website needs to accomplish.",
+      "We learn your business, goals, audience, and positioning.",
   },
   {
     number: "02",
     title: "Design & Build",
     description:
-      "We create a custom website that reflects the quality of your work and makes your business look established, credible, and premium.",
+      "We create a premium digital presence aligned to your brand and market.",
   },
   {
     number: "03",
-    title: "Launch & Support",
+    title: "Launch & Elevate",
     description:
-      "We refine, launch, and make sure everything is ready for a smooth handoff, with ongoing support available if needed.",
+      "Your new site goes live polished, optimized, and ready to perform.",
   },
 ];
 
@@ -33,15 +33,11 @@ const ProcessSection = () => {
           className="text-center mb-20"
         >
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
-            Process
+            Our Process
           </p>
           <h2 className="font-serif text-3xl md:text-5xl text-foreground">
-            A Clear, Thoughtful Process
+            A refined process built for premium outcomes
           </h2>
-          <p className="mx-auto mt-6 max-w-3xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            We keep every project focused, organized, and tailored to the businesses we serve, so
-            your new website feels polished, strategic, and ready to perform.
-          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">

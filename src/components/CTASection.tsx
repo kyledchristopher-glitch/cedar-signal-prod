@@ -257,6 +257,9 @@ const CTASection = () => {
                   {submissionState === "submitting" ? "Sending..." : "Request a Consultation"}
                 </Button>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
+                  Free strategy consultation · No obligation proposal · Transparent pricing · Built for serious businesses
+                </p>
+                <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                   Tell us a bit about your business and project. We&apos;ll review it and reach
                   out with next steps. You can also contact us at{" "}
                   <a

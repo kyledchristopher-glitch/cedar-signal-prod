@@ -59,6 +59,9 @@ const HeroSection = () => {
               <a href="#portfolio">View Studio Work</a>
             </Button>
           </div>
+          <p className="mt-5 max-w-2xl text-sm leading-relaxed text-parchment/88">
+            Free strategy consultation · No obligation proposal · Transparent pricing · Built for serious businesses
+          </p>
         </motion.div>
       </div>
 

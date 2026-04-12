@@ -1,5 +1,3 @@
-import { processDueOnboardingEmails } from "./_lib/onboarding.ts";
-
 export default async function handler(req, res) {
   const authHeader = req.headers.authorization;
 
@@ -15,6 +13,7 @@ export default async function handler(req, res) {
   }
 
   try {
+    const { processDueOnboardingEmails } = await import("./_lib/onboarding.ts");
     const result = await processDueOnboardingEmails();
     return res.status(200).json({ ok: true, ...result });
   } catch (error) {

@@ -1,5 +1,3 @@
-import { registerOnboardingLead } from "./_lib/onboarding.ts";
-
 const PUBLIC_CONTACT_EMAIL = "kyle@cedarandsignal.com";
 const OPERATIONAL_ALERT_EMAIL =
   process.env.CEDAR_CONSULTATION_ALERT_EMAIL || "KyleDChristopher@gmail.com";
@@ -270,6 +268,7 @@ export default async function handler(req, res) {
     }
 
     try {
+      const { registerOnboardingLead } = await import("./_lib/onboarding.ts");
       await registerOnboardingLead({
         email: body.email,
         firstName: body.name.split(/\s+/)[0] || body.name,

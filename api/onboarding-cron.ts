@@ -1,4 +1,4 @@
-import { processDueOnboardingEmails } from "./_lib/onboarding";
+import { processDueOnboardingEmails } from "./_lib/onboarding.ts";
 
 export default async function handler(req, res) {
   const authHeader = req.headers.authorization;

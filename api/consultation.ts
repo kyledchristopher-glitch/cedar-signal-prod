@@ -1,4 +1,4 @@
-import { registerOnboardingLead } from "./_lib/onboarding";
+import { registerOnboardingLead } from "./_lib/onboarding.ts";
 
 const PUBLIC_CONTACT_EMAIL = "kyle@cedarandsignal.com";
 const OPERATIONAL_ALERT_EMAIL =

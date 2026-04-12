@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
-import logoLight from "@/assets/cedar-signal-logo-light-tight.png";
 
 const Navbar = () => {
   const location = useLocation();
@@ -36,16 +35,11 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between">
-        <Link to="/" className="flex flex-col items-start gap-3 pr-8">
-          <img
-            src={logoLight}
-            alt="Cedar & Signal"
-            className="h-12 w-auto rounded-[18px] border border-brass/20 bg-parchment/95 p-2 shadow-[0_18px_40px_hsl(var(--background)/0.18)] md:h-14"
-            width={1116}
-            height={320}
-            loading="eager"
-          />
-          <span className="pl-2 text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-primary/85">
+        <Link to="/" className="flex flex-col items-start gap-2 pr-8">
+          <span className="text-[0.86rem] font-semibold uppercase tracking-[0.26em] text-foreground md:text-[0.95rem]">
+            Cedar &amp; Signal
+          </span>
+          <span className="text-[0.57rem] font-medium uppercase tracking-[0.36em] text-primary/85 md:text-[0.62rem]">
             Design Studio
           </span>
         </Link>

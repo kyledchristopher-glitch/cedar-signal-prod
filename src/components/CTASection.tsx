@@ -6,8 +6,6 @@ import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
 
 const consultationEmail = "kyle@cedarandsignal.com";
-const consultationSubmitEndpoint = `https://formsubmit.co/ajax/${consultationEmail}`;
-
 const fieldClassName =
   "h-12 rounded-[16px] border-brass/20 bg-background/70 px-4 text-sm text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0";
 
@@ -51,12 +49,22 @@ const CTASection = () => {
     formData.set("_replyto", email);
 
     try {
-      const response = await fetch(consultationSubmitEndpoint, {
+      const response = await fetch("/api/consultation", {
         method: "POST",
         headers: {
+          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: formData,
+        body: JSON.stringify({
+          name,
+          email,
+          phone: formData.get("phone")?.toString().trim() ?? "",
+          company,
+          website: formData.get("website")?.toString().trim() ?? "",
+          projectType,
+          details: formData.get("details")?.toString().trim() ?? "",
+          honey: formData.get("_honey")?.toString().trim() ?? "",
+        }),
       });
 
       const responseBody = await response.json().catch(() => null);

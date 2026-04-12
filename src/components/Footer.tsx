@@ -1,20 +1,14 @@
 import { Link } from "react-router-dom";
-import logoLight from "@/assets/cedar-signal-logo-light-tight.png";
 
 const Footer = () => {
   return (
     <footer className="border-t border-bark/20 bg-bark/10 py-12">
       <div className="max-w-7xl mx-auto flex flex-col items-center justify-between gap-8 px-6 md:flex-row md:px-12">
-        <Link to="/" className="flex flex-col items-center gap-3 md:items-start">
-          <img
-            src={logoLight}
-            alt="Cedar & Signal"
-            className="h-14 w-auto rounded-[18px] border border-brass/20 bg-parchment/95 p-2 shadow-[0_18px_40px_hsl(var(--background)/0.18)]"
-            width={1116}
-            height={320}
-            loading="lazy"
-          />
-          <span className="text-[0.62rem] font-semibold uppercase tracking-[0.34em] text-primary/85">
+        <Link to="/" className="flex flex-col items-center gap-2 md:items-start">
+          <span className="text-[0.86rem] font-semibold uppercase tracking-[0.26em] text-foreground md:text-[0.95rem]">
+            Cedar &amp; Signal
+          </span>
+          <span className="text-[0.57rem] font-medium uppercase tracking-[0.36em] text-primary/85 md:text-[0.62rem]">
             Design Studio
           </span>
         </Link>

@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
 
 const consultationEmail = "kyle@cedarandsignal.com";
+const consultationSubmitEndpoint = `https://formsubmit.co/ajax/${consultationEmail}`;
+const bookingUrl = "https://calendly.com/kyledchristopher/demo";
 const fieldClassName =
   "h-12 rounded-[16px] border-brass/20 bg-background/70 px-4 text-sm text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0";
 
@@ -49,22 +51,12 @@ const CTASection = () => {
     formData.set("_replyto", email);
 
     try {
-      const response = await fetch("/api/consultation", {
+      const response = await fetch(consultationSubmitEndpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
           Accept: "application/json",
         },
-        body: JSON.stringify({
-          name,
-          email,
-          phone: formData.get("phone")?.toString().trim() ?? "",
-          company,
-          website: formData.get("website")?.toString().trim() ?? "",
-          projectType,
-          details: formData.get("details")?.toString().trim() ?? "",
-          honey: formData.get("_honey")?.toString().trim() ?? "",
-        }),
+        body: formData,
       });
 
       const responseBody = await response.json().catch(() => null);
@@ -264,6 +256,16 @@ const CTASection = () => {
                 >
                   {submissionState === "submitting" ? "Sending..." : "Request a Consultation"}
                 </Button>
+                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                  <a
+                    href={bookingUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary transition-colors duration-300 hover:text-foreground"
+                  >
+                    Prefer to book directly? Schedule a call
+                  </a>
+                </p>
                 <p className="mt-4 max-w-2xl text-sm leading-relaxed text-muted-foreground">
                   Free strategy consultation · No obligation proposal · Transparent pricing · Built for serious businesses
                 </p>

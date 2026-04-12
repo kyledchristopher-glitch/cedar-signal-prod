@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
 
 const consultationEmail = "kyle@cedarandsignal.com";
-const consultationSubmitEndpoint = "/api/consultation";
+const consultationSubmitEndpoint = `https://formsubmit.co/ajax/${consultationEmail}`;
 const bookingUrl = "https://calendly.com/kyledchristopher/demo";
 const fieldClassName =
   "h-12 rounded-[16px] border-brass/20 bg-background/70 px-4 text-sm text-foreground placeholder:text-muted-foreground/85 shadow-[inset_0_1px_0_hsl(var(--parchment)/0.04)] backdrop-blur-sm focus-visible:ring-brass/60 focus-visible:ring-offset-0";
@@ -36,26 +36,26 @@ const CTASection = () => {
 
     const form = event.currentTarget;
     const formData = new FormData(form);
+    const name = formData.get("name")?.toString().trim() ?? "";
     const email = formData.get("email")?.toString().trim() ?? "";
+    const company = formData.get("company")?.toString().trim() ?? "";
     setSubmissionState("submitting");
     setSubmissionMessage("");
+
+    formData.set(
+      "_subject",
+      `Cedar & Signal Consultation Request${company ? ` - ${company}` : name ? ` - ${name}` : ""}`,
+    );
+    formData.set("_template", "table");
+    formData.set("_replyto", email);
 
     try {
       const response = await fetch(consultationSubmitEndpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({
-          name: formData.get("name")?.toString().trim() ?? "",
-          email,
-          phone: formData.get("phone")?.toString().trim() ?? "",
-          company: formData.get("company")?.toString().trim() ?? "",
-          website: formData.get("website")?.toString().trim() ?? "",
-          projectType: formData.get("projectType")?.toString().trim() ?? "",
-          details: formData.get("details")?.toString().trim() ?? "",
-          honey: formData.get("_honey")?.toString().trim() ?? "",
-        }),
+        body: formData,
       });
 
       const responseBody = await response.json().catch(() => null);

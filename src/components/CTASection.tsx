@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import ctaBg from "@/assets/cta-bg.jpg";
 
 const consultationEmail = "kyle@cedarandsignal.com";
-const consultationAlertEmail = "KyleDChristopher@gmail.com";
+const consultationAlertEmail = "kyle@cedarandsignal.com";
 const consultationSubmitEndpoint = `https://formsubmit.co/ajax/${consultationAlertEmail}`;
 const bookingUrl = "https://calendly.com/kyledchristopher/demo";
 const fieldClassName =

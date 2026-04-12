@@ -1,5 +1,5 @@
-const CONSULTATION_EMAIL = "kyle@cedarandsignal.com";
-const CONSULTATION_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${CONSULTATION_EMAIL}`;
+const CONSULTATION_ALERT_EMAIL = "KyleDChristopher@gmail.com";
+const CONSULTATION_SUBMIT_ENDPOINT = `https://formsubmit.co/ajax/${CONSULTATION_ALERT_EMAIL}`;
 
 function getTrimmedString(value: unknown) {
   return typeof value === "string" ? value.trim() : "";

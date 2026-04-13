@@ -11,7 +11,7 @@ const solutions = [
 
 const SolutionSection = () => {
   return (
-    <section className="py-24 md:py-36 relative texture-grain">
+    <section className="section-blend relative py-24 md:py-32 texture-grain">
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           <motion.div
@@ -23,7 +23,7 @@ const SolutionSection = () => {
             <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
               The Solution
             </p>
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground leading-tight mb-6">
+            <h2 className="mb-6 font-serif text-3xl leading-[1.08] text-foreground md:text-[3.35rem]">
               We Shape a Digital Presence That{" "}
               <span className="italic text-gradient-gold">Feels Worth the Premium</span>
             </h2>
@@ -43,7 +43,7 @@ const SolutionSection = () => {
             {solutions.map((s, i) => (
               <div
                 key={i}
-                className="flex items-start gap-4 rounded-[22px] border border-brass/15 bg-cedar/15 p-5"
+                className="card-glow flex items-start gap-4 rounded-[22px] border border-brass/15 bg-cedar/15 p-5"
               >
                 <CheckCircle2 className="mt-0.5 shrink-0 text-primary" size={20} />
                 <p className="text-foreground/80 font-sans">{s}</p>

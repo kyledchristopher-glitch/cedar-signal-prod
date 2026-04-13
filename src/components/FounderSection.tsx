@@ -8,7 +8,7 @@ const supportPoints = [
 
 const FounderSection = () => {
   return (
-    <section className="py-24 md:py-32">
+    <section className="section-blend py-24 md:py-28">
       <div className="mx-auto max-w-6xl px-6 md:px-12">
         <div className="grid gap-10 lg:grid-cols-[0.82fr_1.18fr] lg:gap-16">
           <motion.div
@@ -16,7 +16,7 @@ const FounderSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="rounded-[30px] border border-brass/14 bg-bark/10 p-8 shadow-[0_18px_50px_hsl(var(--background)/0.12)]"
+            className="card-glow rounded-[30px] border border-brass/14 bg-bark/10 p-8 shadow-[0_18px_50px_hsl(var(--background)/0.12)]"
           >
             <p className="text-[0.68rem] font-medium uppercase tracking-[0.3em] text-primary">
               Founder Perspective

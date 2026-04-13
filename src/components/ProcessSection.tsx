@@ -23,7 +23,7 @@ const steps = [
 
 const ProcessSection = () => {
   return (
-    <section id="process" className="py-24 md:py-36 relative bg-cabin-gradient texture-grain">
+    <section id="process" className="section-blend relative bg-cabin-gradient py-24 md:py-32 texture-grain">
       <div className="max-w-5xl mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -35,7 +35,7 @@ const ProcessSection = () => {
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             Our Process
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground">
+          <h2 className="font-serif text-3xl text-foreground md:text-[4rem]">
             A refined process built for premium outcomes
           </h2>
         </motion.div>
@@ -48,7 +48,7 @@ const ProcessSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               viewport={{ once: true }}
-              className="rounded-[26px] border border-bark/20 bg-bark/15 p-6 text-center md:text-left"
+              className="card-glow rounded-[26px] border border-bark/20 bg-bark/15 p-6 text-center md:text-left"
             >
               <span className="text-gradient-gold font-serif text-5xl md:text-6xl font-light">
                 {step.number}

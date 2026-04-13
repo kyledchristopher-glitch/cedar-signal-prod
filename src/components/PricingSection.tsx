@@ -47,7 +47,7 @@ const tiers = [
 
 const PricingSection = () => {
   return (
-    <section id="pricing" className="py-24 md:py-36 relative texture-grain">
+    <section id="pricing" className="section-blend relative py-24 md:py-32 texture-grain">
       <div className="max-w-6xl mx-auto px-6 md:px-12 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -59,7 +59,7 @@ const PricingSection = () => {
           <p className="mb-4 text-xs font-medium uppercase tracking-[0.3em] text-primary">
             Services & Investment
           </p>
-          <h2 className="font-serif text-3xl md:text-5xl text-foreground">
+          <h2 className="font-serif text-3xl text-foreground md:text-[4rem]">
             Website Packages Designed for{" "}
             <span className="italic text-gradient-gold">Premium Local Brands</span>
           </h2>
@@ -77,7 +77,7 @@ const PricingSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className={`relative flex h-full flex-col rounded-[28px] border p-8 transition-colors duration-300 md:p-10 ${
+              className={`card-glow relative flex h-full flex-col rounded-[28px] border p-8 transition-colors duration-300 md:p-10 ${
                 tier.featured
                   ? "border-brass/40 bg-cedar/20 shadow-[0_28px_80px_hsl(var(--background)/0.22)]"
                   : "border-bark/25 bg-bark/10 hover:border-bark/50"
@@ -120,7 +120,7 @@ const PricingSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.15 }}
           viewport={{ once: true, margin: "-80px" }}
-          className="mx-auto mt-14 max-w-3xl rounded-[28px] border border-brass/14 bg-bark/10 px-8 py-10 text-center shadow-[0_22px_60px_hsl(var(--background)/0.16)]"
+          className="card-glow mx-auto mt-14 max-w-3xl rounded-[28px] border border-brass/14 bg-bark/10 px-8 py-10 text-center shadow-[0_22px_60px_hsl(var(--background)/0.16)]"
         >
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-primary">
             Consultation

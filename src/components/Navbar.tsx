@@ -50,7 +50,7 @@ const Navbar = () => {
               <Link
                 key={l.href}
                 to={l.href}
-                className={`text-sm uppercase tracking-[0.28em] transition-colors duration-300 hover:text-foreground ${
+                className={`premium-link text-sm uppercase tracking-[0.24em] transition-colors duration-300 hover:text-foreground ${
                   location.pathname === l.href ? "text-foreground" : "text-muted-foreground"
                 }`}
               >
@@ -60,7 +60,7 @@ const Navbar = () => {
               <a
                 key={l.href}
                 href={l.href}
-                className="text-sm uppercase tracking-[0.28em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
+                className="premium-link text-sm uppercase tracking-[0.24em] text-muted-foreground transition-colors duration-300 hover:text-foreground"
               >
                 {l.label}
               </a>
@@ -88,7 +88,7 @@ const Navbar = () => {
                 key={l.href}
                 to={l.href}
                 onClick={() => setMobileOpen(false)}
-                className={`block text-sm uppercase tracking-[0.28em] hover:text-foreground ${
+                className={`block text-sm uppercase tracking-[0.24em] hover:text-foreground ${
                   location.pathname === l.href ? "text-foreground" : "text-muted-foreground"
                 }`}
               >
@@ -99,7 +99,7 @@ const Navbar = () => {
                 key={l.href}
                 href={l.href}
                 onClick={() => setMobileOpen(false)}
-                className="block text-sm uppercase tracking-[0.28em] text-muted-foreground hover:text-foreground"
+                className="block text-sm uppercase tracking-[0.24em] text-muted-foreground hover:text-foreground"
               >
                 {l.label}
               </a>

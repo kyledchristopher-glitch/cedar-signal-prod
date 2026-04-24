@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 42 35% 96%;
+    --background: 40 30% 96%;
     --foreground: 222 28% 10%;
     --card: 0 0% 100%;
     --card-foreground: 222 28% 10%;
@@ -14,20 +14,20 @@
     --popover-foreground: 222 28% 10%;
     --primary: 40 52% 55%;
     --primary-foreground: 222 32% 9%;
-    --secondary: 42 24% 90%;
+    --secondary: 40 22% 91%;
     --secondary-foreground: 222 28% 10%;
-    --muted: 42 22% 90%;
-    --muted-foreground: 220 10% 43%;
+    --muted: 40 18% 91%;
+    --muted-foreground: 220 9% 40%;
     --accent: 190 44% 38%;
     --accent-foreground: 0 0% 100%;
     --destructive: 4 76% 54%;
     --destructive-foreground: 210 40% 98%;
-    --border: 38 18% 82%;
-    --input: 38 18% 82%;
+    --border: 38 16% 80%;
+    --input: 38 16% 80%;
     --ring: 40 52% 55%;
     --radius: 0.5rem;
-    --forest: 222 31% 8%;
-    --pine: 222 28% 12%;
+    --forest: 222 30% 7%;
+    --pine: 222 24% 10%;
     --emerald: 190 44% 38%;
     --moss: 214 18% 26%;
     --olive: 219 12% 48%;
@@ -35,12 +35,12 @@
     --amber: 40 52% 55%;
     --gold: 40 52% 55%;
     --bark: 220 22% 12%;
-    --cedar: 218 22% 14%;
-    --timber: 219 15% 27%;
-    --stone: 220 8% 46%;
-    --cream: 42 35% 96%;
-    --bronze: 34 38% 45%;
-    --warmglow: 42 28% 92%;
+    --cedar: 219 23% 13%;
+    --timber: 219 14% 24%;
+    --stone: 220 8% 44%;
+    --cream: 40 30% 96%;
+    --bronze: 35 34% 43%;
+    --warmglow: 40 22% 92%;
     --brass: 40 52% 55%;
     --walnut: 222 28% 12%;
     --parchment: 42 35% 96%;
@@ -69,6 +69,8 @@
     overflow-x: hidden;
     font-family: 'Inter', sans-serif;
     letter-spacing: 0;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 
   h1,
@@ -115,11 +117,44 @@
   }
 
   .card-line {
-    @apply border border-border/80 bg-card shadow-[0_20px_60px_hsl(222_28%_10%/0.06)];
+    @apply border border-border/85 bg-card shadow-[0_18px_42px_hsl(222_28%_10%/0.045)];
   }
 
   .dark-card {
-    @apply border border-white/10 bg-white/[0.055] shadow-[0_24px_80px_hsl(222_32%_4%/0.22)];
+    @apply border border-white/10 bg-white/[0.045] shadow-[0_24px_72px_hsl(222_32%_4%/0.18)];
+  }
+
+  .page-shell {
+    @apply mx-auto max-w-[96rem] px-6 md:px-10 lg:px-14 xl:px-20;
+  }
+
+  .section-space {
+    @apply py-20 md:py-24;
+  }
+
+  .heading-balance {
+    text-wrap: balance;
+  }
+
+  .body-measure {
+    @apply max-w-2xl;
+  }
+
+  .soft-panel {
+    @apply rounded-lg border border-border/80 bg-white shadow-[0_16px_38px_hsl(222_28%_10%/0.04)];
+  }
+
+  .luxury-mockup {
+    background:
+      radial-gradient(circle at top left, hsl(var(--warmglow) / 0.95), transparent 38%),
+      linear-gradient(180deg, hsl(0 0% 100%), hsl(40 21% 97%));
+  }
+
+  .luxury-grid {
+    background-image:
+      linear-gradient(to right, hsl(220 10% 85% / 0.18) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(220 10% 85% / 0.18) 1px, transparent 1px);
+    background-size: 22px 22px;
   }
 
   .premium-link {
@@ -136,7 +171,8 @@
     transform: scaleX(0);
     transform-origin: left;
     background: currentColor;
-    transition: transform 0.25s ease;
+    transition: transform 0.28s ease, opacity 0.28s ease;
+    opacity: 0.72;
   }
 
   .premium-link:hover::after {

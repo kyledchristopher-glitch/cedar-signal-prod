@@ -30,11 +30,11 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "border-b border-border bg-background/92 py-4 text-foreground backdrop-blur-xl shadow-[0_12px_40px_hsl(222_28%_10%/0.08)]"
-          : "bg-transparent py-6"
+          ? "border-b border-border/70 bg-background/88 py-4 text-foreground backdrop-blur-2xl shadow-[0_10px_28px_hsl(222_28%_10%/0.06)]"
+          : "bg-transparent py-5"
       }`}
     >
-      <div className="mx-auto flex max-w-[96rem] items-center justify-between px-4 md:px-8 lg:px-12 xl:px-16">
+      <div className="page-shell flex items-center justify-between">
         <Link to="/" className="flex flex-col items-start gap-2 pr-8">
           <span className={`text-[0.86rem] font-semibold uppercase tracking-[0.26em] md:text-[0.95rem] ${scrolled ? "text-foreground" : "text-white"}`}>
             Cedar &amp; Signal
@@ -44,9 +44,9 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="hidden md:flex items-center gap-10">
+        <div className="hidden md:flex items-center gap-8 lg:gap-10">
           {links.map((l) => {
-            const linkClassName = `premium-link text-sm uppercase tracking-[0.24em] transition-colors duration-300 ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/80 hover:text-white"}`;
+            const linkClassName = `premium-link text-sm uppercase tracking-[0.22em] transition-colors duration-300 ${scrolled ? "text-muted-foreground hover:text-foreground" : "text-white/78 hover:text-white"}`;
 
             return l.isRoute ? (
               <Link
@@ -73,7 +73,7 @@ const Navbar = () => {
 
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className={`md:hidden ${scrolled ? "text-foreground" : "text-white"}`}
+          className={`md:hidden rounded-md p-1 transition-colors ${scrolled ? "text-foreground" : "text-white"}`}
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
@@ -81,7 +81,7 @@ const Navbar = () => {
       </div>
 
       {mobileOpen && (
-        <div className="space-y-6 border-t border-brass/15 bg-background/95 px-6 py-8 backdrop-blur-xl animate-fade-in md:hidden">
+        <div className="space-y-6 border-t border-brass/12 bg-background/94 px-6 py-8 backdrop-blur-2xl animate-fade-in md:hidden">
           {links.map((l) => (
             l.isRoute ? (
               <Link

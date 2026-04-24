@@ -24,25 +24,49 @@ export default async function handler(req: ApiRequest, res: ApiResponse) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { packageName, priceEnv, customer } = req.body ?? {};
+  const body =
+    typeof req.body === "string"
+      ? JSON.parse(req.body || "{}")
+      : req.body ?? {};
+  const { packageName, priceEnv, customer } = body;
   const resolvedPriceEnv = priceEnv || packageFallbacks[packageName as string];
   const priceId = resolvedPriceEnv ? process.env[resolvedPriceEnv] : undefined;
+  const siteUrl = process.env.VITE_SITE_URL || "https://www.cedarandsignal.com";
 
-  // Stripe integration point:
-  // 1. Add STRIPE_SECRET_KEY and package price IDs in your deployment env.
-  // 2. Install/use stripe and create a hosted Checkout Session here.
-  // 3. Return { url: session.url } so the frontend redirects to Stripe.
   if (!process.env.STRIPE_SECRET_KEY || !priceId) {
     return res.status(200).json({
       mode: "scaffold",
       packageName,
       customer,
-      missing: ["STRIPE_SECRET_KEY", resolvedPriceEnv].filter(Boolean),
+      missing: ["STRIPE_SECRET_KEY", "VITE_SITE_URL", resolvedPriceEnv].filter(Boolean),
       onboardingUrl: `/onboarding?package=${encodeURIComponent(packageName || "Signal Launch")}`,
     });
   }
 
-  return res.status(501).json({
-    error: "Stripe session creation is scaffolded. Install stripe and create the Checkout Session in this handler.",
-  });
+  try {
+    const { default: Stripe } = await import("stripe");
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+    const session = await stripe.checkout.sessions.create({
+      mode: "payment",
+      ui_mode: "embedded",
+      line_items: [{ price: priceId, quantity: 1 }],
+      return_url: `${siteUrl}/onboarding?package=${encodeURIComponent(packageName || "Signal Launch")}&session_id={CHECKOUT_SESSION_ID}`,
+      metadata: {
+        packageName: packageName || "Signal Launch",
+      },
+    });
+
+    if (!session.client_secret) {
+      return res.status(500).json({ error: "Stripe did not return a client secret." });
+    }
+
+    return res.status(200).json({
+      clientSecret: session.client_secret,
+      sessionId: session.id,
+    });
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unable to create Stripe checkout session.";
+    return res.status(500).json({ error: message });
+  }
 }

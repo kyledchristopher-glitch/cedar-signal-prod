@@ -41,7 +41,7 @@ const Onboarding = () => {
         </section>
 
         <section className="bg-[#F7F5F2] px-6 py-16 md:px-12 md:py-20">
-          <form onSubmit={handleSubmit} className="mx-auto max-w-3xl space-y-7">
+          <form onSubmit={handleSubmit} className="mx-auto max-w-5xl space-y-7">
             <div className="soft-panel p-6 md:p-7">
               <p className="eyebrow mb-5 text-bronze">1. Your Info</p>
               <div className="grid gap-5 sm:grid-cols-2">
@@ -74,7 +74,6 @@ const Onboarding = () => {
                   ["serviceAreas", "What Cities or Areas Do You Serve?"],
                   ["differentiator", "What Makes Your Business Different?"],
                   ["customerCompliments", "What Do Customers Usually Compliment You On?"],
-                  ["industryFrustrations", "What Frustrates You About Others In Your Industry?"],
                   ["oneSentenceDescription", "If Someone Described Your Business In One Sentence, What Would You Want Them To Say?"],
                 ].map(([name, label]) => (
                   <div key={name}>
@@ -155,7 +154,7 @@ const Onboarding = () => {
               </div>
             </div>
 
-            <div className="rounded-lg bg-[#0B0F14] p-6 text-white shadow-[0_18px_42px_hsl(222_32%_4%/0.16)]">
+            <div className="rounded-lg bg-[#0B0F14] p-6 text-center text-white shadow-[0_18px_42px_hsl(222_32%_4%/0.16)]">
               <p className="text-2xl font-serif">Submit Project Intake</p>
               <p className="mt-2 text-sm text-white/70">We&apos;ll use this to create a website that feels true to your business.</p>
               <Button variant="hero" size="lg" className="mt-5" type="submit">Submit Project Intake</Button>
